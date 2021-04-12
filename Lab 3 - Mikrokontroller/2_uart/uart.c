@@ -18,9 +18,21 @@ void uart_init() {
 }
 
 void uart_send(char letter) {
-
+    UART->STARTTX = 1;
+    UART->TXD = letter;
+    while (!UART->TXDRDY);
+    
+    UART->TXDRDY = 0; // Trengs dette?
+    // UART->STOPTX = 1;
 }
 
 char uart_read() {
+    UART->STARTRX = 1;
 
+    if (UART->RXDRDY) {
+        UART->RXDRDY = 0;
+        return UART->RXD;
+    } else {
+        return '\0';
+    }
 }

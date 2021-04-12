@@ -49,7 +49,7 @@ typedef struct
     volatile uint32_t INTENSET;
     volatile uint32_t INTENCLR;
 
-    volatile uint32_t RESERVED6[0x59];
+    volatile uint32_t RESERVED6[0x5D];
 
     volatile uint32_t ERRORSRC;
 
